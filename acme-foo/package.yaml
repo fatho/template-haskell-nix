@@ -1,0 +1,55 @@
+name: acme-foo
+maintainer: ACME
+category: Other
+synopsis: Does ACME things.
+description: Does ACME things.
+version: '0.1'
+
+extra-source-files:
+- package.yaml
+
+ghc-options: >-
+  -Wall
+  -Wincomplete-record-updates
+  -Wincomplete-uni-patterns
+dependencies:
+- aeson
+- async
+- base
+- bytestring
+- clock
+- conduit
+- conduit-extra
+- deepseq
+- hspec
+- mtl
+- network
+- optparse-applicative
+- QuickCheck
+- text
+- transformers
+- vector
+
+library:
+  source-dirs: src
+
+executables:
+  acme-foo:
+    dependencies:
+      - acme-foo
+    ghc-options:
+      - -rtsopts
+      - -threaded
+      - '"-with-rtsopts=-T -N -A32m -n4m -qg"'
+    main: app/Main.hs
+
+tests:
+  acme-foo-tests:
+    dependencies:
+      - acme-foo
+    ghc-options:
+      - -rtsopts
+      - -threaded
+      - '"-with-rtsopts=-T -N -A32m -n4m -qg"'
+    main: Spec.hs
+    source-dirs: tests

@@ -1,0 +1,11 @@
+resolver: ghc-8.10
+
+packages:
+  - acme-foo
+
+rebuild-ghc-options: true
+
+nix:
+  enable: true
+  shell-file: ./nix/stack-shell.nix
+  path: ["nixpkgs=./nix/nixpkgs.nix"]
